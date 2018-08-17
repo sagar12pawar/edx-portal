@@ -126,8 +126,7 @@ class EnterpriseList extends React.Component {
 
   render() {
     const { loading, error } = this.props;
-    const { enterprises, pageCount } = this.state;
-
+    const { enterprises, pageCount, query } = this.state;
     return (
       <div>
         <Helmet>
@@ -145,6 +144,9 @@ class EnterpriseList extends React.Component {
                 }
                 {!loading && !error && enterprises && enterprises.length === 1 && pageCount === 1 &&
                   this.renderRedirectToEnterpriseAdminPage()
+                }
+                {!loading && !error && enterprises && enterprises.length === 1 && pageCount === 1 &&
+                  query && this.renderTableContent()
                 }
                 {!loading && !error && enterprises && enterprises.length === 1 && pageCount === 1 &&
                   this.renderRedirectToEnterpriseAdminPage()
@@ -189,6 +191,7 @@ EnterpriseList.propTypes = {
   location: PropTypes.shape({
     search: PropTypes.string,
   }),
+
 };
 
 export default EnterpriseList;
