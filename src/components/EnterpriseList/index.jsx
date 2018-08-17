@@ -6,6 +6,7 @@ import qs from 'query-string';
 
 import H2 from '../H2';
 import StatusAlert from '../StatusAlert';
+import Search from '../../containers/Search';
 import LoadingMessage from '../LoadingMessage';
 import TableWithPagination from '../TableWithPagination';
 import { formatTableOptions } from '../../utils';
@@ -145,8 +146,14 @@ class EnterpriseList extends React.Component {
                 {!loading && !error && enterprises && enterprises.length === 1 && pageCount === 1 &&
                   this.renderRedirectToEnterpriseAdminPage()
                 }
+                {!loading && !error && enterprises && enterprises.length === 1 && pageCount === 1 &&
+                  this.renderRedirectToEnterpriseAdminPage()
+                }
                 {enterprises && enterprises.length > 0 && this.renderTableContent()}
               </div>
+            </div>
+            <div className="col-3">
+              <Search />
             </div>
           </div>
         </div>
