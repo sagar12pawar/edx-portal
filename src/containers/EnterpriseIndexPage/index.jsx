@@ -5,10 +5,10 @@ import { clearPortalConfiguration } from '../../data/actions/portalConfiguration
 import { getLocalUser } from '../../data/actions/authentication';
 
 const mapStateToProps = state => ({
-  query: state.search.query,
   loading: state.enterpriseList.loading,
   error: state.enterpriseList.error,
   enterprises: state.enterpriseList.enterprises,
+  searchQuery: state.search.query,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -7,7 +7,7 @@ const search = (state = {
     case FETCH_SEARCH_REQUEST:
       return {
         ...state,
-        query: action.payload.search,
+        query: action.payload.query,
       };
     default:
       return state;

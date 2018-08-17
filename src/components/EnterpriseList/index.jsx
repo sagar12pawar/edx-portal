@@ -39,13 +39,19 @@ class EnterpriseList extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { enterprises } = this.props;
+    const { enterprises, searchQuery } = this.props;
 
     if (enterprises !== prevProps.enterprises) {
       this.setState({ // eslint-disable-line react/no-did-update-set-state
         enterprises: this.formatEnterpriseData(enterprises),
         pageCount: enterprises ? enterprises.num_pages : null,
       });
+    }
+
+    if (searchQuery !== prevProps.searchQuery) {
+      const options = qs.parse(this.props.location.search);
+      options.search = searchQuery;
+      this.getEnterpriseList(options);
     }
   }
 
@@ -171,6 +177,7 @@ EnterpriseList.defaultProps = {
   location: {
     search: null,
   },
+  searchQuery: null,
 };
 
 EnterpriseList.propTypes = {
@@ -191,7 +198,7 @@ EnterpriseList.propTypes = {
   location: PropTypes.shape({
     search: PropTypes.string,
   }),
-
+  searchQuery: PropTypes.string,
 };
 
 export default EnterpriseList;
