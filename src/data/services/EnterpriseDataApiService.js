@@ -44,6 +44,20 @@ class EnterpriseDataApiService {
       },
     });
   }
+
+  static fetchSidebarData(enterpriseId, options) {
+    const queryParams = {
+      ...options,
+    };
+    const sidebarDataUrl = `${this.enterpriseBaseUrl}${enterpriseId}/sidebar/?${qs.stringify(queryParams)}`;
+    const jwtToken = getAccessToken();
+
+    return httpClient.get(sidebarDataUrl, {
+      headers: {
+        Authorization: `JWT ${jwtToken}`,
+      },
+    });
+  }
 }
 
 export default EnterpriseDataApiService;
